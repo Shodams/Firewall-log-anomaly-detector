@@ -4,17 +4,6 @@
 
 This lab simulates a real enterprise setup where Palo Alto Panorama forwards firewall logs to a centralized Linux syslog server. The collected logs can later be parsed by the Firewall Log Anomaly Detector.
 
-## Architecture
-
-```mermaid
-flowchart LR
-    A[Palo Alto Firewalls] --> B[Panorama]
-    B --> C[Syslog Log Server]
-    C --> D[/var/log/panorama/panorama.log]
-    D --> E[Python Log Parser]
-    E --> F[ML Anomaly Detection]
-    F --> G[Mini SIEM Dashboard]
-```
 
 ## Lab Assumptions
 
