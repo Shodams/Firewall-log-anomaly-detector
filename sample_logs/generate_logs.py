@@ -19,7 +19,11 @@ logs = []
 
 for i in range(NUM_LOGS):
     timestamp = start_time + timedelta(seconds=random.randint(0, 86400))
-
+    # Inject anomaly (5% of logs)
+    if random.random() < 0.05:
+        log["source_ip"] = "10.10.99.99"
+        log["port"] = 3389
+        log["action"] = "deny"
     log = {
         "timestamp": timestamp,
         "source_ip": random.choice(source_ips),
