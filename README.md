@@ -6,6 +6,9 @@ This project detects anomalies in firewall traffic and threat logs. It is inspir
 
 The detector reviews firewall log activity and identifies suspicious behavior such as unusual source IP activity, denied traffic spikes, abnormal destination patterns, risky application usage, and potential policy violations.
 
+In addition, i have added a lab guide that shows how a linux syslog server could receive logs from Palo Alto Panorama
+
+
 ## Why This Project Matters
 
 Enterprise security teams rely on centralized firewall logs to detect threats, investigate incidents, and validate policy enforcement. This project simulates that workflow by analyzing firewall logs and flagging unusual activity for security review.
