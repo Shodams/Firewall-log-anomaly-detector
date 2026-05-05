@@ -13,7 +13,7 @@ In addition, i have added a lab guide that shows how a linux syslog server could
 
 Enterprise security teams rely on centralized firewall logs to detect threats, investigate incidents, and validate policy enforcement. This project simulates that workflow by analyzing firewall logs and flagging unusual activity for security review.
 
-## Skills Demonstrated
+## Key points Demonstrated
 
 - Firewall log analysis
 - Zero Trust security monitoring
@@ -99,9 +99,7 @@ python src/anomaly_detector.py
 - Add MITRE ATT&CK mapping
 - Add risk scoring by source IP, application, and zone
 
-## Resume Bullet
 
-Built a firewall log anomaly detector that analyzes centralized firewall logs to identify suspicious network behavior, denied traffic spikes, risky application usage, and potential policy violations in support of SOC monitoring and Zero Trust enforcement.
 
 ## Machine Learning Upgrade
 
@@ -146,7 +144,7 @@ The project includes a Streamlit dashboard that displays:
 
 ## Panorama Syslog Log Server Lab
 
-This project includes a realistic lab guide showing how a Linux rsyslog server could receive logs from Palo Alto Panorama.
+This project includes a rlab guide showing how a Linux rsyslog server could receive logs from Palo Alto Panorama.
 
 The lab covers:
 
