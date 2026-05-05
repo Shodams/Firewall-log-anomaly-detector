@@ -165,3 +165,7 @@ docs/panorama_syslog_lab.md
 ```bash
 streamlit run dashboard/app.py
 
+## Dashboard Preview
+
+![Firewall SIEM Dashboard](screenshots/dashboard_overview.png)
+
