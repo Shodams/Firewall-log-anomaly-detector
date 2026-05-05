@@ -1,6 +1,6 @@
 # Firewall Log Anomaly Detector Architecture
 
-## Real-World Architecture
+## Architecture
 
 ```mermaid
 flowchart TD
