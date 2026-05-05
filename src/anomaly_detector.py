@@ -1,55 +1,50 @@
 import pandas as pd
+from sklearn.ensemble import IsolationForest
+from risk_scoring import calculate_ip_risk
 
 LOG_FILE = "sample_logs/firewall_logs.csv"
 
-def detect_denied_traffic_spike(df, threshold=3):
-    denied = df[df["action"] == "deny"]
-    counts = denied.groupby("source_ip").size()
+def run_ml_anomaly_detection(df):
+    df_encoded = df.copy()
 
-    alerts = []
-    for source_ip, count in counts.items():
-        if count >= threshold:
-            alerts.append({
-                "alert": "Denied traffic spike",
-                "source_ip": source_ip,
-                "count": count,
-                "severity": "Medium"
-            })
+    df_encoded["action_code"] = df_encoded["action"].map({"allow": 0, "deny": 1})
+    df_encoded["is_unknown_app"] = df_encoded["application"].str.contains("unknown", case=False, na=False).astype(int)
+    df_encoded["is_risky_port"] = df_encoded["port"].isin([3389, 445, 4444, 23]).astype(int)
+    df_encoded["is_restricted_zone"] = (df_encoded["destination_zone"] == "restricted").astype(int)
 
-    return alerts
+    features = df_encoded[[
+        "port",
+        "bytes",
+        "action_code",
+        "is_unknown_app",
+        "is_risky_port",
+        "is_restricted_zone"
+    ]]
 
-def detect_unusual_ports(df):
-    risky_ports = [3389, 4444, 23, 445]
-    suspicious = df[df["port"].isin(risky_ports)]
+    model = IsolationForest(
+        n_estimators=100,
+        contamination=0.05,
+        random_state=42
+    )
 
-    alerts = []
-    for _, row in suspicious.iterrows():
-        alerts.append({
-            "alert": "Risky destination port detected",
-            "source_ip": row["source_ip"],
-            "destination_ip": row["destination_ip"],
-            "port": row["port"],
-            "application": row["application"],
-            "severity": "High"
-        })
+    df["ml_anomaly"] = model.fit_predict(features)
+    df["ml_anomaly"] = df["ml_anomaly"].map({1: "Normal", -1: "Anomaly"})
 
-    return alerts
+    return df
 
 def main():
     df = pd.read_csv(LOG_FILE)
 
-    alerts = []
-    alerts.extend(detect_denied_traffic_spike(df))
-    alerts.extend(detect_unusual_ports(df))
+    df = run_ml_anomaly_detection(df)
+    risk_df = calculate_ip_risk(df)
 
-    print("\nFirewall Log Anomaly Detector Results")
-    print("------------------------------------")
+    print("\nMachine Learning Anomaly Results")
+    print("--------------------------------")
+    print(df[df["ml_anomaly"] == "Anomaly"].head(20))
 
-    if not alerts:
-        print("No anomalies detected.")
-    else:
-        for alert in alerts:
-            print(alert)
+    print("\nTop Risky Source IPs")
+    print("--------------------")
+    print(risk_df.head(10))
 
 if __name__ == "__main__":
     main()
