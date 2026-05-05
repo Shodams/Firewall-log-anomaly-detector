@@ -141,11 +141,6 @@ The project includes a Streamlit dashboard that displays:
 - Anomaly event table
 - Traffic breakdown by action and destination zone
 
-## Run the Dashboard
-
-```bash
-streamlit run dashboard/app.py
-
 ## Panorama Syslog Log Server Lab
 
 This project includes a realistic lab guide showing how a Linux rsyslog server could receive logs from Palo Alto Panorama.
@@ -161,6 +156,11 @@ The lab covers:
 - Using normalized CSV logs for ML anomaly detection
 
 See:
+docs/panorama_syslog_lab.md
 
 ```text
-docs/panorama_syslog_lab.md
+## Run the Dashboard
+
+```bash
+streamlit run dashboard/app.py
+
