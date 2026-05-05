@@ -46,5 +46,13 @@ def main():
     print("--------------------")
     print(risk_df.head(10))
 
+     # Save outputs
+
+    df[df["ml_anomaly"] == "Anomaly"].to_csv("output/anomalies.csv", index=False)
+
+    risk_df.to_csv("output/risk_scores.csv", index=False)
+
+    print("\nResults saved to /output folder")
+
 if __name__ == "__main__":
     main()
