@@ -99,3 +99,49 @@ python src/anomaly_detector.py
 ## Resume Bullet
 
 Built a firewall log anomaly detector that analyzes centralized firewall logs to identify suspicious network behavior, denied traffic spikes, risky application usage, and potential policy violations in support of SOC monitoring and Zero Trust enforcement.
+
+## Machine Learning Upgrade
+
+This project uses Isolation Forest, an unsupervised machine learning algorithm, to detect unusual firewall log activity without requiring labeled attack data.
+
+The model reviews features such as:
+
+- Destination port
+- Traffic volume in bytes
+- Allow or deny action
+- Unknown application usage
+- Risky destination ports
+- Restricted zone access
+
+## IP Risk Scoring
+
+Each source IP receives a risk score based on suspicious behavior:
+
+- Denied traffic count
+- Risky ports such as 3389, 445, 4444, and 23
+- Unknown application usage
+- Restricted zone access attempts
+
+Severity levels:
+
+- Low
+- Medium
+- High
+- Critical
+
+## Mini SIEM Dashboard
+
+The project includes a Streamlit dashboard that displays:
+
+- Total firewall logs
+- Machine learning anomalies
+- Denied sessions
+- Critical source IPs
+- Top risky IPs
+- Anomaly event table
+- Traffic breakdown by action and destination zone
+
+## Run the Dashboard
+
+```bash
+streamlit run dashboard/app.py
