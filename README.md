@@ -39,7 +39,7 @@ flowchart LR
 
 ## Detection Logic
 
-The project can detect:
+The Algorithm can detect:
 
 - High volume of denied traffic from one source
 - Repeated access attempts to restricted zones
@@ -103,7 +103,7 @@ python src/anomaly_detector.py
 
 ## Machine Learning Upgrade
 
-This project uses Isolation Forest, an unsupervised machine learning algorithm, to detect unusual firewall log activity without requiring labeled attack data.
+This project makes use of Isolation Forest, an unsupervised machine learning algorithm, to detect unusual firewall log activity without requiring labeled attack data.
 
 The model reviews features such as:
 
@@ -144,7 +144,7 @@ The project includes a Streamlit dashboard that displays:
 
 ## Panorama Syslog Log Server Lab
 
-This project includes a rlab guide showing how a Linux rsyslog server could receive logs from Palo Alto Panorama.
+This project also includes a rlab guide showing how a Linux rsyslog server could receive logs from Palo Alto Panorama.
 
 The lab covers:
 
