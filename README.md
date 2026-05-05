@@ -157,7 +157,7 @@ The lab covers:
 - Using normalized CSV logs for ML anomaly detection
 ## Dashboard Preview
 
-![Firewall SIEM Dashboard](screenshots/dashboard_overview.png)
+![Firewall SIEM Dashboard](screenshots/dashboard_overview.pdf)
 
 See:
 docs/panorama_syslog_lab.md
