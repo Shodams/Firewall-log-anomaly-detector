@@ -145,3 +145,22 @@ The project includes a Streamlit dashboard that displays:
 
 ```bash
 streamlit run dashboard/app.py
+
+## Panorama Syslog Log Server Lab
+
+This project includes a realistic lab guide showing how a Linux rsyslog server could receive logs from Palo Alto Panorama.
+
+The lab covers:
+
+- Building a Linux syslog receiver
+- Opening UDP 514
+- Creating a Panorama Syslog Server Profile
+- Creating a Log Forwarding Profile
+- Sending Traffic, Threat, URL, WildFire, System, and Config logs
+- Verifying logs with `tail` and `tcpdump`
+- Using normalized CSV logs for ML anomaly detection
+
+See:
+
+```text
+docs/panorama_syslog_lab.md
