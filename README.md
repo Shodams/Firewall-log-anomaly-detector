@@ -155,6 +155,9 @@ The lab covers:
 - Sending Traffic, Threat, URL, WildFire, System, and Config logs
 - Verifying logs with `tail` and `tcpdump`
 - Using normalized CSV logs for ML anomaly detection
+## Dashboard Preview
+
+![Firewall SIEM Dashboard](screenshots/dashboard_overview.png)
 
 See:
 docs/panorama_syslog_lab.md
@@ -165,7 +168,5 @@ docs/panorama_syslog_lab.md
 ```bash
 streamlit run dashboard/app.py
 
-## Dashboard Preview
 
-![Firewall SIEM Dashboard](screenshots/dashboard_overview.png)
 
